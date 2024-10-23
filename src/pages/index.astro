@@ -1,0 +1,15 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import Bookmarks from '@/components/Bookmarks.vue'
+import { GETFolders } from '@/api/folders.ts'
+
+let response = await GETFolders(Astro)
+const data = await response.json()
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<h1>Bookmarki</h1>
+		<Bookmarks client:load folders={data} />
+	</main>
+</Layout>

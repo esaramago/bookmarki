@@ -1,0 +1,27 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cs2djsqmneklf4abig70",
+    "operations": [
+      {
+        "add_column": {
+          "up": "''",
+          "table": "files",
+          "column": {
+            "pk": false,
+            "name": "description",
+            "type": "text",
+            "unique": false,
+            "comment": "",
+            "nullable": false
+          }
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cs2djsqmneklf4abig70",
+  "parent": "mig_cs2djmqg1japae520mrg",
+  "schema": "public",
+  "startedAt": "2024-10-08T07:06:27.654907Z"
+}

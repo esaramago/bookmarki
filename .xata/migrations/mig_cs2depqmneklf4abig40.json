@@ -1,0 +1,26 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cs2depqmneklf4abig40",
+    "operations": [
+      {
+        "add_column": {
+          "table": "folders",
+          "column": {
+            "pk": false,
+            "name": "path",
+            "type": "text",
+            "unique": false,
+            "comment": "",
+            "nullable": true
+          }
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cs2depqmneklf4abig40",
+  "parent": "mig_cs2ddj2g1japae520mn0",
+  "schema": "public",
+  "startedAt": "2024-10-08T06:55:35.476979Z"
+}

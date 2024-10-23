@@ -1,0 +1,32 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cs2dka2g1japae520mtg",
+    "operations": [
+      {
+        "add_column": {
+          "table": "files",
+          "column": {
+            "pk": false,
+            "name": "path",
+            "type": "text",
+            "unique": false,
+            "comment": "{\"xata.link\":\"folders\"}",
+            "nullable": true,
+            "references": {
+              "name": "path_link",
+              "table": "folders",
+              "column": "xata_id",
+              "on_delete": "SET NULL"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cs2dka2g1japae520mtg",
+  "parent": "mig_cs2dk0qg1japae520msg",
+  "schema": "public",
+  "startedAt": "2024-10-08T07:07:21.481901Z"
+}

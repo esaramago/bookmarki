@@ -1,0 +1,19 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cs2dgtig1japae520mo0",
+    "operations": [
+      {
+        "drop_column": {
+          "table": "folders",
+          "column": "path"
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cs2dgtig1japae520mo0",
+  "parent": "mig_cs2depqmneklf4abig40",
+  "schema": "public",
+  "startedAt": "2024-10-08T07:00:07.9021Z"
+}

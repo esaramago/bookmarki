@@ -1,0 +1,27 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cs2ddj2g1japae520mn0",
+    "operations": [
+      {
+        "add_column": {
+          "up": "''",
+          "table": "folders",
+          "column": {
+            "pk": false,
+            "name": "description",
+            "type": "text",
+            "unique": false,
+            "comment": "",
+            "nullable": false
+          }
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cs2ddj2g1japae520mn0",
+  "parent": "mig_cs2ddc2g1japae520mm0",
+  "schema": "public",
+  "startedAt": "2024-10-08T06:53:01.522279Z"
+}

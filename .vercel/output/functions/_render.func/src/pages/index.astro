@@ -1,0 +1,33 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import Bookmarks from '@/components/Bookmarks.vue'
+
+import xata from '@/xataClient'
+
+const folders = await xata.folders
+	.select([
+		'id',
+		'description',
+		'level',
+		'path.id',
+	])
+	.sort('level', 'asc')
+	.getAll()
+
+const files = await xata.files
+	.select([
+		'id',
+		'description',
+		'href',
+		'path.xata_id',
+	])
+	.getAll()
+
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<h1>Bookmarki</h1>
+		<Bookmarks folders={folders} />
+	</main>
+</Layout>
