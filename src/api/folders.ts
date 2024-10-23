@@ -8,7 +8,7 @@ export const GETFolders: APIRoute = async () => {
       'id',
       'description',
       'level',
-      'path.id',
+      'folder.xata_id',
     ])
     .sort('level', 'asc')
     .getAll()

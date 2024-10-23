@@ -1,0 +1,20 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cschfjheio148f28elq0",
+    "operations": [
+      {
+        "alter_column": {
+          "name": "folder",
+          "table": "pages",
+          "column": "path"
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cschfjheio148f28elq0",
+  "parent": "mig_cschfh4u455ai8moq11g",
+  "schema": "public",
+  "startedAt": "2024-10-23T15:35:43.693846Z"
+}

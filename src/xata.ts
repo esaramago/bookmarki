@@ -8,18 +8,18 @@ import type {
 
 const tables = [
   {
-    name: "files",
+    name: "folders",
     checkConstraints: {
-      files_xata_id_length_xata_id: {
-        name: "files_xata_id_length_xata_id",
+      folders_xata_id_length_xata_id: {
+        name: "folders_xata_id_length_xata_id",
         columns: ["xata_id"],
         definition: "CHECK ((length(xata_id) < 256))",
       },
     },
     foreignKeys: {
-      path_link: {
-        name: "path_link",
-        columns: ["path"],
+      folder_link: {
+        name: "folder_link",
+        columns: ["folder"],
         referencedTable: "folders",
         referencedColumns: ["xata_id"],
         onDelete: "SET NULL",
@@ -27,8 +27,8 @@ const tables = [
     },
     primaryKey: [],
     uniqueConstraints: {
-      _pgroll_new_files_xata_id_key: {
-        name: "_pgroll_new_files_xata_id_key",
+      _pgroll_new_folders_xata_id_key: {
+        name: "_pgroll_new_folders_xata_id_key",
         columns: ["xata_id"],
       },
     },
@@ -42,29 +42,21 @@ const tables = [
         comment: "",
       },
       {
-        name: "href",
-        type: "text",
-        notNull: true,
-        unique: false,
-        defaultValue: null,
-        comment: "",
-      },
-      {
-        name: "level",
-        type: "int",
-        notNull: false,
-        unique: false,
-        defaultValue: null,
-        comment: "",
-      },
-      {
-        name: "path",
+        name: "folder",
         type: "link",
         link: { table: "folders" },
         notNull: false,
         unique: false,
         defaultValue: null,
         comment: '{"xata.link":"folders"}',
+      },
+      {
+        name: "level",
+        type: "int",
+        notNull: false,
+        unique: false,
+        defaultValue: "0",
+        comment: "",
       },
       {
         name: "xata_createdat",
@@ -101,10 +93,10 @@ const tables = [
     ],
   },
   {
-    name: "folders",
+    name: "pages",
     checkConstraints: {
-      folders_xata_id_length_xata_id: {
-        name: "folders_xata_id_length_xata_id",
+      pages_xata_id_length_xata_id: {
+        name: "pages_xata_id_length_xata_id",
         columns: ["xata_id"],
         definition: "CHECK ((length(xata_id) < 256))",
       },
@@ -112,7 +104,7 @@ const tables = [
     foreignKeys: {
       path_link: {
         name: "path_link",
-        columns: ["path"],
+        columns: ["folder"],
         referencedTable: "folders",
         referencedColumns: ["xata_id"],
         onDelete: "SET NULL",
@@ -120,8 +112,8 @@ const tables = [
     },
     primaryKey: [],
     uniqueConstraints: {
-      _pgroll_new_folders_xata_id_key: {
-        name: "_pgroll_new_folders_xata_id_key",
+      _pgroll_new_pages_xata_id_key: {
+        name: "_pgroll_new_pages_xata_id_key",
         columns: ["xata_id"],
       },
     },
@@ -135,21 +127,29 @@ const tables = [
         comment: "",
       },
       {
-        name: "level",
-        type: "int",
-        notNull: true,
-        unique: false,
-        defaultValue: "0",
-        comment: "",
-      },
-      {
-        name: "path",
+        name: "folder",
         type: "link",
         link: { table: "folders" },
         notNull: false,
         unique: false,
-        defaultValue: "'root'::text",
+        defaultValue: null,
         comment: '{"xata.link":"folders"}',
+      },
+      {
+        name: "href",
+        type: "text",
+        notNull: true,
+        unique: false,
+        defaultValue: null,
+        comment: "",
+      },
+      {
+        name: "level",
+        type: "int",
+        notNull: false,
+        unique: false,
+        defaultValue: "0",
+        comment: "",
       },
       {
         name: "xata_createdat",
@@ -190,15 +190,15 @@ const tables = [
 export type SchemaTables = typeof tables;
 export type InferredTypes = SchemaInference<SchemaTables>;
 
-export type Files = InferredTypes["files"];
-export type FilesRecord = Files & XataRecord;
-
 export type Folders = InferredTypes["folders"];
 export type FoldersRecord = Folders & XataRecord;
 
+export type Pages = InferredTypes["pages"];
+export type PagesRecord = Pages & XataRecord;
+
 export type DatabaseSchema = {
-  files: FilesRecord;
   folders: FoldersRecord;
+  pages: PagesRecord;
 };
 
 const DatabaseClient = buildClient();

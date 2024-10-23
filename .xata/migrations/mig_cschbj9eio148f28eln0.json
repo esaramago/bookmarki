@@ -1,0 +1,27 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cschbj9eio148f28eln0",
+    "operations": [
+      {
+        "add_column": {
+          "table": "pages",
+          "column": {
+            "pk": false,
+            "name": "level",
+            "type": "int",
+            "unique": false,
+            "comment": "",
+            "default": "'0'",
+            "nullable": true
+          }
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cschbj9eio148f28eln0",
+  "parent": "mig_cschbeheio148f28elm0",
+  "schema": "public",
+  "startedAt": "2024-10-23T15:27:10.395466Z"
+}

@@ -3,12 +3,12 @@ import type { APIRoute } from 'astro'
 
 export const GETPages: APIRoute = async () => {
 
-  const response = await xata.files
+  const response = await xata.pages
     .select([
       'id',
       'description',
       'level',
-      'path.id',
+      'folder.xata_id',
       'href'
     ])
     .sort('level', 'asc')

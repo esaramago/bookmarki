@@ -1,0 +1,22 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cschenku455ai8moq10g",
+    "operations": [
+      {
+        "alter_column": {
+          "up": "\"level\"",
+          "down": "\"level\"",
+          "table": "folders",
+          "column": "level",
+          "nullable": true
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cschenku455ai8moq10g",
+  "parent": "mig_cscheaj6ekk6lm99d2bg",
+  "schema": "public",
+  "startedAt": "2024-10-23T15:33:51.715321Z"
+}

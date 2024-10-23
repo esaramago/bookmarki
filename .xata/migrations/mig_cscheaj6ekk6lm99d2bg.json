@@ -1,0 +1,18 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cscheaj6ekk6lm99d2bg",
+    "operations": [
+      {
+        "drop_table": {
+          "name": "files"
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cscheaj6ekk6lm99d2bg",
+  "parent": "mig_cschbj9eio148f28eln0",
+  "schema": "public",
+  "startedAt": "2024-10-23T15:32:59.288186Z"
+}

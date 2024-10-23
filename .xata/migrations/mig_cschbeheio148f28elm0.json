@@ -1,0 +1,32 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cschbeheio148f28elm0",
+    "operations": [
+      {
+        "add_column": {
+          "table": "pages",
+          "column": {
+            "pk": false,
+            "name": "path",
+            "type": "text",
+            "unique": false,
+            "comment": "{\"xata.link\":\"folders\"}",
+            "nullable": true,
+            "references": {
+              "name": "path_link",
+              "table": "folders",
+              "column": "xata_id",
+              "on_delete": "SET NULL"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cschbeheio148f28elm0",
+  "parent": "mig_cschb24u455ai8moq0ug",
+  "schema": "public",
+  "startedAt": "2024-10-23T15:26:51.227473Z"
+}
