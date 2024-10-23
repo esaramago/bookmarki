@@ -1,9 +1,0 @@
-{
-  "manifest_version": 3,
-  "name": "Abrir URL no Google Drive",
-  "version": "1.0",
-  "description": "Abre uma URL específica quando a extensão é clicada.",
-  "action": {
-    "default_popup": "index.html"
-  }
-}
