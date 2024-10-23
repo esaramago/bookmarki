@@ -50,6 +50,14 @@ const tables = [
         comment: "",
       },
       {
+        name: "level",
+        type: "int",
+        notNull: false,
+        unique: false,
+        defaultValue: null,
+        comment: "",
+      },
+      {
         name: "path",
         type: "link",
         link: { table: "folders" },

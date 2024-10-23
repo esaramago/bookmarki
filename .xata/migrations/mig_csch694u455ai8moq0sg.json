@@ -1,0 +1,26 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_csch694u455ai8moq0sg",
+    "operations": [
+      {
+        "add_column": {
+          "table": "files",
+          "column": {
+            "pk": false,
+            "name": "level",
+            "type": "int",
+            "unique": false,
+            "comment": "",
+            "nullable": true
+          }
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_csch694u455ai8moq0sg",
+  "parent": "mig_cs2napoj5m8gpv4tkihg",
+  "schema": "public",
+  "startedAt": "2024-10-23T15:15:48.655222Z"
+}

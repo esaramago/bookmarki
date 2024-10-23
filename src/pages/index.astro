@@ -2,14 +2,24 @@
 import Layout from '@/layouts/Layout.astro'
 import Bookmarks from '@/components/Bookmarks.vue'
 import { GETFolders } from '@/api/folders.ts'
+import { GETPages } from '@/api/pages.ts'
 
-let response = await GETFolders(Astro)
-const data = await response.json()
+const folders = await GETFolders(Astro)
+const pages = await GETPages(Astro)
+
+const data = {
+	folders: await folders.json(),
+	pages: await pages.json(),
+}
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Bookmarki">
 	<main>
 		<h1>Bookmarki</h1>
-		<Bookmarks client:load folders={data} />
+		<Bookmarks
+			client:load
+			folders={data.folders}
+			pages={data.pages}
+		/>
 	</main>
 </Layout>
