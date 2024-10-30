@@ -1,0 +1,19 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_csh4noa4u77c7rtoievg",
+    "operations": [
+      {
+        "drop_column": {
+          "table": "folders",
+          "column": "folder"
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_csh4noa4u77c7rtoievg",
+  "parent": "mig_csh4nlg3gia2fa0fp3vg",
+  "schema": "public",
+  "startedAt": "2024-10-30T15:08:17.736123Z"
+}

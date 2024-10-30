@@ -1,0 +1,19 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_csh4opo3gia2fa0fp42g",
+    "operations": [
+      {
+        "rename_table": {
+          "to": "links",
+          "from": "pages"
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_csh4opo3gia2fa0fp42g",
+  "parent": "mig_csh4on03gia2fa0fp41g",
+  "schema": "public",
+  "startedAt": "2024-10-30T15:10:31.266365Z"
+}

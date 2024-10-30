@@ -1,0 +1,20 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_csh4ui83gia2fa0fp49g",
+    "operations": [
+      {
+        "alter_column": {
+          "name": "branch",
+          "table": "tree",
+          "column": "tree"
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_csh4ui83gia2fa0fp49g",
+  "parent": "mig_csh4u6g3gia2fa0fp48g",
+  "schema": "public",
+  "startedAt": "2024-10-30T15:22:50.442263Z"
+}

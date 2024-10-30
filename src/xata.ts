@@ -17,9 +17,9 @@ const tables = [
       },
     },
     foreignKeys: {
-      folder_link: {
-        name: "folder_link",
-        columns: ["folder"],
+      parent_link: {
+        name: "parent_link",
+        columns: ["parent"],
         referencedTable: "folders",
         referencedColumns: ["xata_id"],
         onDelete: "SET NULL",
@@ -42,7 +42,7 @@ const tables = [
         comment: "",
       },
       {
-        name: "folder",
+        name: "parent",
         type: "link",
         link: { table: "folders" },
         notNull: false,
@@ -51,11 +51,156 @@ const tables = [
         comment: '{"xata.link":"folders"}',
       },
       {
-        name: "level",
+        name: "xata_createdat",
+        type: "datetime",
+        notNull: true,
+        unique: false,
+        defaultValue: "now()",
+        comment: "",
+      },
+      {
+        name: "xata_id",
+        type: "text",
+        notNull: true,
+        unique: true,
+        defaultValue: "('rec_'::text || (xata_private.xid())::text)",
+        comment: "",
+      },
+      {
+        name: "xata_updatedat",
+        type: "datetime",
+        notNull: true,
+        unique: false,
+        defaultValue: "now()",
+        comment: "",
+      },
+      {
+        name: "xata_version",
         type: "int",
-        notNull: false,
+        notNull: true,
         unique: false,
         defaultValue: "0",
+        comment: "",
+      },
+    ],
+  },
+  {
+    name: "links",
+    checkConstraints: {
+      pages_xata_id_length_xata_id: {
+        name: "pages_xata_id_length_xata_id",
+        columns: ["xata_id"],
+        definition: "CHECK ((length(xata_id) < 256))",
+      },
+    },
+    foreignKeys: {
+      parent_link: {
+        name: "parent_link",
+        columns: ["parent"],
+        referencedTable: "folders",
+        referencedColumns: ["xata_id"],
+        onDelete: "SET NULL",
+      },
+    },
+    primaryKey: [],
+    uniqueConstraints: {
+      _pgroll_new_pages_xata_id_key: {
+        name: "_pgroll_new_pages_xata_id_key",
+        columns: ["xata_id"],
+      },
+    },
+    columns: [
+      {
+        name: "description",
+        type: "text",
+        notNull: true,
+        unique: false,
+        defaultValue: null,
+        comment: "",
+      },
+      {
+        name: "href",
+        type: "text",
+        notNull: true,
+        unique: false,
+        defaultValue: null,
+        comment: "",
+      },
+      {
+        name: "parent",
+        type: "link",
+        link: { table: "folders" },
+        notNull: false,
+        unique: false,
+        defaultValue: null,
+        comment: '{"xata.link":"folders"}',
+      },
+      {
+        name: "xata_createdat",
+        type: "datetime",
+        notNull: true,
+        unique: false,
+        defaultValue: "now()",
+        comment: "",
+      },
+      {
+        name: "xata_id",
+        type: "text",
+        notNull: true,
+        unique: true,
+        defaultValue: "('rec_'::text || (xata_private.xid())::text)",
+        comment: "",
+      },
+      {
+        name: "xata_updatedat",
+        type: "datetime",
+        notNull: true,
+        unique: false,
+        defaultValue: "now()",
+        comment: "",
+      },
+      {
+        name: "xata_version",
+        type: "int",
+        notNull: true,
+        unique: false,
+        defaultValue: "0",
+        comment: "",
+      },
+    ],
+  },
+  {
+    name: "tree",
+    checkConstraints: {
+      bookmarks_xata_id_length_xata_id: {
+        name: "bookmarks_xata_id_length_xata_id",
+        columns: ["xata_id"],
+        definition: "CHECK ((length(xata_id) < 256))",
+      },
+    },
+    foreignKeys: {},
+    primaryKey: [],
+    uniqueConstraints: {
+      _pgroll_new_bookmarks_xata_id_key: {
+        name: "_pgroll_new_bookmarks_xata_id_key",
+        columns: ["xata_id"],
+      },
+    },
+    columns: [
+      {
+        name: "branch",
+        type: "json",
+        notNull: false,
+        unique: false,
+        defaultValue: null,
+        comment: "",
+      },
+      {
+        name: "description",
+        type: "text",
+        notNull: true,
+        unique: false,
+        defaultValue: null,
         comment: "",
       },
       {
@@ -93,28 +238,24 @@ const tables = [
     ],
   },
   {
-    name: "pages",
+    name: "type",
     checkConstraints: {
-      pages_xata_id_length_xata_id: {
-        name: "pages_xata_id_length_xata_id",
+      type_xata_id_length_xata_id: {
+        name: "type_xata_id_length_xata_id",
         columns: ["xata_id"],
         definition: "CHECK ((length(xata_id) < 256))",
       },
     },
-    foreignKeys: {
-      path_link: {
-        name: "path_link",
-        columns: ["folder"],
-        referencedTable: "folders",
-        referencedColumns: ["xata_id"],
-        onDelete: "SET NULL",
-      },
-    },
+    foreignKeys: {},
     primaryKey: [],
     uniqueConstraints: {
-      _pgroll_new_pages_xata_id_key: {
-        name: "_pgroll_new_pages_xata_id_key",
+      _pgroll_new_type_xata_id_key: {
+        name: "_pgroll_new_type_xata_id_key",
         columns: ["xata_id"],
+      },
+      type__pgroll_new_description_key: {
+        name: "type__pgroll_new_description_key",
+        columns: ["description"],
       },
     },
     columns: [
@@ -122,33 +263,8 @@ const tables = [
         name: "description",
         type: "text",
         notNull: true,
-        unique: false,
+        unique: true,
         defaultValue: null,
-        comment: "",
-      },
-      {
-        name: "folder",
-        type: "link",
-        link: { table: "folders" },
-        notNull: false,
-        unique: false,
-        defaultValue: null,
-        comment: '{"xata.link":"folders"}',
-      },
-      {
-        name: "href",
-        type: "text",
-        notNull: true,
-        unique: false,
-        defaultValue: null,
-        comment: "",
-      },
-      {
-        name: "level",
-        type: "int",
-        notNull: false,
-        unique: false,
-        defaultValue: "0",
         comment: "",
       },
       {
@@ -193,12 +309,20 @@ export type InferredTypes = SchemaInference<SchemaTables>;
 export type Folders = InferredTypes["folders"];
 export type FoldersRecord = Folders & XataRecord;
 
-export type Pages = InferredTypes["pages"];
-export type PagesRecord = Pages & XataRecord;
+export type Links = InferredTypes["links"];
+export type LinksRecord = Links & XataRecord;
+
+export type Tree = InferredTypes["tree"];
+export type TreeRecord = Tree & XataRecord;
+
+export type Type = InferredTypes["type"];
+export type TypeRecord = Type & XataRecord;
 
 export type DatabaseSchema = {
   folders: FoldersRecord;
-  pages: PagesRecord;
+  links: LinksRecord;
+  tree: TreeRecord;
+  type: TypeRecord;
 };
 
 const DatabaseClient = buildClient();

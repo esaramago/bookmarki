@@ -1,0 +1,19 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_csh4u6g3gia2fa0fp48g",
+    "operations": [
+      {
+        "rename_table": {
+          "to": "tree",
+          "from": "bookmarks"
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_csh4u6g3gia2fa0fp48g",
+  "parent": "mig_csh4rig3gia2fa0fp46g",
+  "schema": "public",
+  "startedAt": "2024-10-30T15:22:03.884645Z"
+}

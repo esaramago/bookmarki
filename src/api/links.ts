@@ -1,17 +1,15 @@
 import xata from '@/xataClient'
 import type { APIRoute } from 'astro'
 
-export const GETPages: APIRoute = async () => {
+export const GETLinks: APIRoute = async () => {
 
-  const response = await xata.pages
+  const response = await xata.links
     .select([
       'id',
       'description',
-      'level',
-      'folder.xata_id',
+      'parent.xata_id',
       'href'
     ])
-    .sort('level', 'asc')
     .getAll()
 
   return new Response(
