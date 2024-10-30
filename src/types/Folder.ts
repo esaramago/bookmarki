@@ -1,7 +1,10 @@
+import type Link from './Link'
+
 export default interface Folder {
   id: string
   description: string
-  children?: Folder[]
+  folders?: Folder[]
+  links?: Link[]
 
   parent?: any
 }

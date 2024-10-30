@@ -1,11 +1,16 @@
 <template>
   <li>
     {{folder.description}}
-    <ul v-if="folder.children">
+    <ul v-if="folder.folders">
       <Folder
-        v-for="childFolder in folder.children"
+        v-for="childFolder in folder.folders"
         :folder="childFolder"
       />
+      <li v-for="link in folder.links">
+        <a
+          :href="link.href"
+        >{{ link.description }}</a>
+        </li>
     </ul>
   </li>
 </template>
