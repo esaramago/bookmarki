@@ -33,12 +33,32 @@
   const addFolderToStructure = (childFolder: FolderType, parentId: string) => {
 
     // TOFIX: find deep
-    const parentFolder = folders.value.find(parentFolder => parentFolder.id === parentId)
+    const parentFolder = findParentFolder(folders.value, parentId, childFolder.description)
 
     if (!parentFolder) return
 
     if (!parentFolder.folders) parentFolder.folders = []
     parentFolder.folders.push(childFolder)
+  }
+
+  const findParentFolder = (folders: Folders[], parentId: string, test?) => {
+
+// TOFIX
+
+    return folders.find(parentFolder => {
+
+      if (test === 'Lojas' && parentFolder.description === 'Orégãos') {
+        debugger
+      }
+
+      if (parentFolder.id === parentId) {
+        return parentFolder
+      } else if (parentFolder.folders) {
+        return findParentFolder(parentFolder.folders, parentId, test)
+      }
+    })
+
+
   }
 
 
